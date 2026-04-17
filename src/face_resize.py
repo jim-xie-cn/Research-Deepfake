@@ -75,7 +75,6 @@ def main():
     print(len(fake_files))
     min_count = min(len(fake_files),len(real_files))
     print(min_count,len(fake_files),len(real_files))
-    return
     for i in tqdm(range(min_count)):
         source = str(fake_files[i])
         file_name = source.split("/")[-1].split(".")[0]

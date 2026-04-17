@@ -61,7 +61,7 @@ def merge_group(item_df_tuple,action):
     item, df_t = item_df_tuple
     data_list = []
     for i in tqdm(range(10000),desc=f"{item[0]}-{item[1]}"):
-        df_sample = df_t.sample(n=500)
+        df_sample = df_t.sample(n=500,replace=True)
         df_stats = get_stats(df_sample)
         df_stats['kind'] = item[0]
         df_stats['pca'] = item[1]
@@ -75,8 +75,8 @@ def process_group(action,item_df_tuple):
 def main(dataset,action,worker):
     grouped_data = load_group(dataset,action)
     results = []
-    with ThreadPoolExecutor(max_workers=worker) as executor:
-    #with ProcessPoolExecutor(max_workers=worker) as executor:  
+    #with ThreadPoolExecutor(max_workers=worker) as executor:
+    with ProcessPoolExecutor(max_workers=worker) as executor:  
         futures = [executor.submit(process_group,action, g) for g in grouped_data]
         for future in tqdm(as_completed(futures), total=len(futures), desc=f"Processing groups {action}"):
             results.append(future.result())
