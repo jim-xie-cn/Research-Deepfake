@@ -65,14 +65,13 @@ def get_fake_faces():
     return all_files
 
 def get_real_faces():
-    folder = f"{data_path}/raw/dataset/ffhq"
+    folder = f"{data_path}/raw/dataset/flickrfaceshq-dataset-ffhq"
     all_files = list_files(folder,['.jpg','.png'])
     return all_files
 
 def main():
     fake_files = get_fake_faces()
     real_files = get_real_faces()
-    print(len(fake_files))
     min_count = min(len(fake_files),len(real_files))
     print(min_count,len(fake_files),len(real_files))
     for i in tqdm(range(min_count)):
