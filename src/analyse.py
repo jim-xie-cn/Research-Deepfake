@@ -1,4 +1,3 @@
-#从原始数据中，生成统计信息
 import cv2,logging
 import argparse
 import numpy as np
