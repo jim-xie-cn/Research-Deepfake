@@ -1,25 +1,17 @@
-# Research-Deepfake
 
-Dataset:
+---
 
-download below dataset and unzip to ./data/raw
+## Source Code Overview
 
-Fake images: 1-million-fake-faces (https://www.kaggle.com/datasets/tunguz/1-million-fake-faces)
+- `face_resize.py` — Resize raw images to 256×256 pixels.
+- `face_crop.py` — Detect and crop face regions from raw images.
+- `feature.py` — Extract FD, MFS, LAC, entropy, mean, and standard deviation features.
+- `analyse.py` — Sample feature sets for distribution analysis.
 
-Real images: flickrfaceshq-dataset-ffhq (https://www.kaggle.com/datasets/arnaud58/flickrfaceshq-dataset-ffhq)
+---
 
-Source code:
+## Quick Demo
 
-face_resize.py: resize raw image to 256x256
-
-face_crop.py: extract face images from raw image
-
-feature.py:extract fd,mfs,lac,entropy,mean,std feature from face image
-
-analyse.py:sampling from features for distribution analyzing
-
-Execute demo:
-
+```bash
 cd ./scripts
-
-sh pipline.sh
+sh pipeline.sh

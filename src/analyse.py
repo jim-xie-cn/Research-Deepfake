@@ -34,36 +34,55 @@ def load_sample(dataset,action):
     real_folder =  get_files(f"./data/face/feature/{dataset}/real/")
     result = []
     for file in fake_folder:
-        type = file.split(".csv")[0].split("-")[-1]
+        tmp = file.split(".csv")[0].split("/")[-1].split("-")
+        pca = int(tmp[0])
+        file_id = tmp[1]
+        type = tmp[2]
         if type != action:
             continue
         df_tmp = pd.read_csv(file)
         df_tmp['kind'] = "fake"
+        df_tmp['pca'] = pca
+        df_tmp['file'] = file_id
         result.append(df_tmp)
 
     for file in real_folder:
-        type = file.split(".csv")[0].split("-")[-1]
+        tmp = file.split(".csv")[0].split("/")[-1].split("-")
+        pca = int(tmp[0])
+        file_id = tmp[1]
+        type = tmp[2]
         if type != action:
             continue
         df_tmp = pd.read_csv(file)
         df_tmp['kind'] = "real"
+        df_tmp['pca'] = pca
+        df_tmp['file'] = file_id
         result.append(df_tmp)
 
     return pd.concat(result,ignore_index=True).reset_index(drop = True)
 
 def load_group(dataset,action):
     df = load_sample(dataset,action)
-    grouped_data = list(df.groupby(['kind', 'pca']))
+    if action == 'common':
+        grouped_data = list(df.groupby(['kind', 'pca']))
+    elif action == 'mfs':
+        grouped_data = list(df.groupby(['kind', 'pca','q']))
+    elif action == 'lac':
+        grouped_data = list(df.groupby(['kind', 'pca','scales']))
     return grouped_data
 
 def merge_group(item_df_tuple,action):
     item, df_t = item_df_tuple
     data_list = []
-    for i in tqdm(range(10000),desc=f"{item[0]}-{item[1]}"):
+    for i in tqdm(range(10),desc=f"{item[0]}-{item[1]}"):
         df_sample = df_t.sample(n=500,replace=True)
         df_stats = get_stats(df_sample)
         df_stats['kind'] = item[0]
         df_stats['pca'] = item[1]
+        if action == 'mfs':
+            df_stats['q'] = item[2]
+        elif action == 'lac':
+            df_stats['scales'] = item[2]
         data_list.append(df_stats)
     
     return pd.concat(data_list, ignore_index=True).reset_index(drop = True)
@@ -91,7 +110,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Batch fractal or multifractal calculate.")
     parser.add_argument("--dataset", type=str, default='train', help="root path")
     parser.add_argument("--action", choices=['common','mfs','lac'], default='common',help='actions')
-    parser.add_argument("--worker", type=int, default=2, help="int 0 to 24.")
+    parser.add_argument("--worker", type=int, default=12, help="int 0 to 24.")
     args = parser.parse_args()
     print(args)
     main(args.dataset.strip(),args.action.strip(),args.worker)
