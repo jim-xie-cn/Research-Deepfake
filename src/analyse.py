@@ -74,7 +74,7 @@ def load_group(dataset,action):
 def merge_group(item_df_tuple,action):
     item, df_t = item_df_tuple
     data_list = []
-    for i in tqdm(range(10),desc=f"{item[0]}-{item[1]}"):
+    for i in tqdm(range(10000),desc=f"{item[0]}-{item[1]}"):
         df_sample = df_t.sample(n=500,replace=True)
         df_stats = get_stats(df_sample)
         df_stats['kind'] = item[0]
