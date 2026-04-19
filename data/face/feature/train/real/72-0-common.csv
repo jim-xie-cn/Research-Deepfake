@@ -1,2 +1,0 @@
-,pca,entropy,mean,std,skew,kurt,fd,common,mfs,lac
-0,72,15.215987941161384,-8.696027491252093e-16,1.6595364655309608,-0.025162883599722966,0.526546080621968,"[{'bin': 'no', 'fd': 2.881587810241117}]",./data/face/feature/train/real//72-0-common.csv,./data/face/feature/train/real//72-0-mfs.csv,./data/face/feature/train/real//72-0-lac.csv

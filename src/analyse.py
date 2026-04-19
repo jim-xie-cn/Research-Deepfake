@@ -30,8 +30,8 @@ def get_files(directory):
     return png_files_recursive
 
 def load_sample(dataset,action):
-    fake_folder = get_files(f"./data/face/feature/{dataset}/fake/")
-    real_folder =  get_files(f"./data/face/feature/{dataset}/real/")
+    fake_folder = get_files(f"./data/face/features/{dataset}/fake/")
+    real_folder =  get_files(f"./data/face/features/{dataset}/real/")
     result = []
     for file in fake_folder:
         tmp = file.split(".csv")[0].split("/")[-1].split("-")
@@ -93,16 +93,16 @@ def process_group(action,item_df_tuple):
 def main(dataset,action,worker):
     grouped_data = load_group(dataset,action)
     results = []
-    #with ThreadPoolExecutor(max_workers=worker) as executor:
-    with ProcessPoolExecutor(max_workers=worker) as executor:  
+    with ThreadPoolExecutor(max_workers=worker) as executor:
+    #with ProcessPoolExecutor(max_workers=worker) as executor:  
         futures = [executor.submit(process_group,action, g) for g in grouped_data]
         for future in tqdm(as_completed(futures), total=len(futures), desc=f"Processing groups {action}"):
             results.append(future.result())
 
     if results:
         df_stats = pd.concat(results, ignore_index=True).reset_index(drop=True)
-        os.makedirs(f"./data/face/status/{dataset}", exist_ok=True)
-        df_stats.to_csv(f"./data/face/status/{dataset}/{action}.csv")
+        os.makedirs(f"./data/face/stats/{dataset}", exist_ok=True)
+        df_stats.to_csv(f"./data/face/stats/{dataset}/{action}.csv")
     else:
         print("no result")
 

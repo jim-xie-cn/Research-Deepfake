@@ -1,4 +1,3 @@
-###裁剪生成人脸图像
 #!/usr/bin/env python
 # coding: utf-8
 
@@ -77,7 +76,8 @@ def get_data(file,folder):
         lowDData, reconData = CFAFeatureSelect.get_matrix_by_pca(base_img,i)
         delt = np.array(base_img - reconData)
         get_stats(i,delt,file,folder)
-    
+        #cv2.imwrite(f"{folder}/{i}-{file_name}.png",reconData)
+
     cv2.imwrite(f"{folder}/{file_name}.png",face)
 
 def process_one_batch(params,indexes):
@@ -86,7 +86,6 @@ def process_one_batch(params,indexes):
     real_file_list = params['real_file_list']
     fake_folder = params['output_fake_folder']
     real_folder = params['output_real_folder']
-
     
     try:
         for index in indexes:
@@ -123,9 +122,8 @@ def main(dataset,worker,action):
         batch_count = min(len(real_file_list), len(fake_file_list))
     
     if batch_count > 50000:
-        batch_count = 50000
+        batch_count = 10000
 
-    batch_count = 20000
     batch_size = 10
     
     params = {}
@@ -133,8 +131,8 @@ def main(dataset,worker,action):
     params['action'] = action
     params['fake_file_list'] = fake_file_list
     params['real_file_list'] = real_file_list
-    params['output_fake_folder'] = f"./data/face/feature/{dataset}/fake/"
-    params['output_real_folder'] = f"./data/face/feature/{dataset}/real/"
+    params['output_fake_folder'] = f"./data/face/features/{dataset}/fake/"
+    params['output_real_folder'] = f"./data/face/features/{dataset}/real/"
     
     os.makedirs(params['output_fake_folder'], exist_ok=True)
     os.makedirs(params['output_real_folder'], exist_ok=True)

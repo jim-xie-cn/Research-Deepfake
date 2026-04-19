@@ -1,4 +1,3 @@
-###裁剪生成人脸图像
 #!/usr/bin/env python
 # coding: utf-8
 
@@ -83,15 +82,15 @@ def main(worker):
     indexes_list = [list(range(start, min(start + batch_size, batch_count))) for start in range(0, batch_count, batch_size)]
 
     max_workers = worker
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-    #with ProcessPoolExecutor(max_workers=max_workers) as executor:
+    #with ThreadPoolExecutor(max_workers=max_workers) as executor:
+    with ProcessPoolExecutor(max_workers=max_workers) as executor:
         futures = [executor.submit(process_one_batch, fake_file_list, real_file_list, batch) for batch in indexes_list]
         for _ in tqdm(as_completed(futures), total=len(futures)):
             pass
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Batch fractal or multifractal calculate.")
-    parser.add_argument("--worker", type=int, default=16, help="int 0 to 64.")
+    parser.add_argument("--worker", type=int, default=8, help="int 0 to 64.")
     args = parser.parse_args()
     
     print(f"Worker selected : {args.worker}")

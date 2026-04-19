@@ -25,14 +25,12 @@ def get_normal(df_data, group='kind'):
     df_standardized = df_data.copy()
 
     def safe_zscore(x):
-        # 忽略 NaN
         valid_mask = ~np.isnan(x)
-        if valid_mask.sum() <= 1:  # 有效值 ≤ 1
+        if valid_mask.sum() <= 1:
             return np.zeros_like(x)
         std = np.nanstd(x)
         if std == 0:
             return np.zeros_like(x)
-        # 对有效值做 zscore，其余保持 NaN
         z = (x - np.nanmean(x)) / std
         return z
     df_standardized[columns_to_standardize] = (
@@ -157,10 +155,7 @@ def test_data(df_data, y_col="kind", x_cols=None):
     y_vals = df_data[y_col].unique().tolist()
     results = []
 
-    print("=== 自动显著性检验 ===")
-
     for col in x_cols:
-        # 多组情况
         if len(y_vals) > 2:
             groups = [df_data[df_data[y_col] == val][col].dropna() for val in y_vals]
             normal_pvals = [normaltest(g).pvalue for g in groups if len(g) > 2]
@@ -172,12 +167,10 @@ def test_data(df_data, y_col="kind", x_cols=None):
                 method = "Kruskal-Wallis"
             results.append({"feature": col, "method": method, "p_value": p})
 
-        # 两组情况
         else:
             for i, j in combinations(y_vals, 2):
                 g1 = df_data[df_data[y_col] == i][col].dropna()
                 g2 = df_data[df_data[y_col] == j][col].dropna()
-                # 正态性检验
                 p1 = normaltest(g1).pvalue if len(g1) > 2 else 1
                 p2 = normaltest(g2).pvalue if len(g2) > 2 else 1
                 if p1 > 0.05 and p2 > 0.05:
@@ -188,7 +181,7 @@ def test_data(df_data, y_col="kind", x_cols=None):
                     method = "Mann-Whitney U"
                 results.append({"feature": col, "group1": i, "group2": j, "method": method, "p_value": p})
 
-    print("\n=== 随机森林测试 ===")
+    print("\n===Testing ===")
     X = df_data[x_cols]
     y = LabelEncoder().fit_transform(df_data[y_col])
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
@@ -196,16 +189,15 @@ def test_data(df_data, y_col="kind", x_cols=None):
     clf.fit(X_train, y_train)
     y_pred = clf.predict(X_test)
     
-    print("\n=== 分类结果 ===")
     print(classification_report(y_test, y_pred))
     
     acc = clf.score(X_test, y_test)
     if acc > 0.7:
-        print(f"\n结论: 准确率 {acc:.3f} → 特征有较强分类能力")
+        print(f"\n acc: {acc:.3f} → High")
     elif acc > 0.55:
-        print(f"\n结论: 准确率 {acc:.3f} → 特征有一定分类能力，但不强")
+        print(f"\n acc: {acc:.3f} → Middle")
     else:
-        print(f"\n结论: 准确率 {acc:.3f} → 特征区分能力较弱")
+        print(f"\n:acc: {acc:.3f} → Low")
     
     return pd.DataFrame(results)
 

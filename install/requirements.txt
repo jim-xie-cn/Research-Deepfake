@@ -1,0 +1,14 @@
+pandas
+seaborn
+numpy
+tqdm
+matplotlib
+scipy
+opencv-python
+sklearn
+jupyter
+itertools
+mtcnn
+pillow==10.4.0
+FreeAeon-Fractal==0.6.6
+FreeAeon-ML==0.3.7
