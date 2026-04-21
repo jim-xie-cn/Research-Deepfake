@@ -1,6 +1,8 @@
 # Research-Deepfake
 
-This repository accompanies the paper: **Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection**  (🔗 https://arxiv.org/abs/2604.17268) 
+This repository accompanies the paper: **Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection**  
+
+Paper: 🔗 https://arxiv.org/abs/2604.17268
 
 ---
 
@@ -29,35 +31,35 @@ All experimental data of this paper is available in https://huggingface.co/datas
 
 To reproduce the results reported in the paper follow steps:
 
-### Download the processed dataset
+### 1. Download the processed dataset
 
 https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake/resolve/main/paper/data.tar.gz?download=true
 
 ---
 
-### Extract the dataset and replace the data directory:
+### 2. Extract the dataset and replace the data directory:
 ```bash
 tar -xzvf data.tar.gz
 ```
 ---
-### Launch Jupyter Notebook:
+### 3. Launch Jupyter Notebook
 ```bash
 cd scripts
 jupyter notebook
 ```
 ---
 
-### Check result
+### 4. Check result
 
 Open the src/paper.ipynb with jupyter
 
 ---
 
-# Work with your-self data
+# Work with data of yourself
 
-## 1. Dataset Preparation
+### 1. Dataset Preparation
 
-Here is an example, (use 1-million-fake-faces for fake images,flickrfaceshq-dataset-ffhq for real images)
+Here is an example (use 1-million-fake-faces for fake images,flickrfaceshq-dataset-ffhq for real images).
 
 Download the following datasets and unzip them into `./data/raw`:
 
@@ -104,7 +106,7 @@ data/
 ```
 ---
 
-## 2. Run process task
+### 2. Run process task
 
 ```bash
 cd ./scripts
@@ -114,7 +116,7 @@ sh pipeline.sh
 This script runs the full preprocessing and analysis pipeline end-to-end.
 
 ---
-## 3. Check result
+### 3. Check result
 
 ```bash
 cd scripts
@@ -122,12 +124,6 @@ jupyter notebook
 ```
 ---
 Open src/main.ipynb with jupyter
-
----
-## Notes
-
-- Ensure all dependencies required by the scripts are installed (see `requirements.txt` if available).
-- Adjust script paths or parameters as needed for your environment.
 
 ---
 
