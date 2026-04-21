@@ -47,6 +47,8 @@ jupyter notebook
 ```
 ---
 
+### Check result
+
 Open the src/paper.ipynb with jupyter
 
 ---
@@ -114,8 +116,6 @@ This script runs the full preprocessing and analysis pipeline end-to-end.
 ---
 ## 3. Check result
 
-Launch Jupyter Notebook:
----
 ```bash
 cd scripts
 jupyter notebook
