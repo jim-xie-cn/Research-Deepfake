@@ -1,8 +1,6 @@
 # Research-Deepfake
 
-This repository accompanies the paper:
-
-**Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection**  
+This repository accompanies the paper: **Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection**  
 🔗 https://arxiv.org/abs/2604.17268
 
 ---
