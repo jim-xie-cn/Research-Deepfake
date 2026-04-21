@@ -28,23 +28,26 @@ pip install -r requirements.txt
 
 # 🔁 Reproduce Paper's Results
 
-To reproduce the results reported in the paper:
+All experimental data of this paper is available in https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake.
 
-Download the processed dataset:
+To reproduce the results reported in the paper follow steps:
+
+### Download the processed dataset
 https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake/resolve/main/paper/data.tar.gz?download=true
+---
 
-Extract the dataset and replace the data directory:
+### Extract the dataset and replace the data directory:
 ```bash
 tar -xzvf data.tar.gz
 ```
 ---
-Launch Jupyter Notebook:
+### Launch Jupyter Notebook:
 ```bash
 cd scripts
 jupyter notebook
 ```
 ---
-Open the notebook:
+### Open the notebook:
 ---
 ```bash
 open src/paper.ipynb
