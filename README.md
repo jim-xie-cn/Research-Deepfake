@@ -122,7 +122,6 @@ This script runs the full preprocessing and analysis pipeline end-to-end.
 cd scripts
 jupyter notebook
 ```
----
 Open src/main.ipynb with jupyter
 
 ---
