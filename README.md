@@ -46,7 +46,8 @@ cd scripts
 jupyter notebook
 ```
 ---
-### Open the src/paper.ipynb with jupyter
+
+Open the src/paper.ipynb with jupyter
 
 ---
 
