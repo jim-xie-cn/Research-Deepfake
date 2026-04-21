@@ -90,7 +90,7 @@ data/
     │   ├── features (common,MFS and Lacunarity features, genreated by feature.py)
     │   │   └── train
     |   |       |── common-10000.csv (merged common features for 10000 samples)
-    |   |       |── common-10000.csv (merged common features for 50000 samples)
+    |   |       |── common-50000.csv (merged common features for 50000 samples)
     │   │       ├── fake (MFS and Lacunarity features for fake images)
     │   │       └── real (MFS and Lacunarity features for real images)
     │   ├── resize (resized images, genreated by face_resize.py)
