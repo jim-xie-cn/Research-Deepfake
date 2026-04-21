@@ -23,7 +23,7 @@ Install required dependencies:
 ```bash
 cd install
 pip install -r requirements.txt
-
+```
 ---
 
 # 🔁 Reproduce Paper's Results
@@ -36,16 +36,19 @@ https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake/resolve/main/paper/
 Extract the dataset and replace the data directory:
 ```bash
 tar -xzvf data.tar.gz
+```
 ---
 Launch Jupyter Notebook:
 ```bash
 cd scripts
 jupyter notebook
+```
 ---
 Open the notebook:
 ---
 ```bash
-src/paper.ipynb
+open src/paper.ipynb
+```
 ---
 
 The provided dataset already includes preprocessed images and extracted features used in the paper, enabling direct reproduction without running the full pipeline.
@@ -117,14 +120,13 @@ Launch Jupyter Notebook:
 ```bash
 cd scripts
 jupyter notebook
-
+```
 ---
 Open the notebook:
-
 ---
 ```bash
-src/main.ipynb
-
+open src/main.ipynb
+```
 ## Notes
 
 - Ensure all dependencies required by the scripts are installed (see `requirements.txt` if available).
