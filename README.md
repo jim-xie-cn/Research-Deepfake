@@ -131,16 +131,12 @@ Open src/main.ipynb with jupyter
 
 ---
 
-#Cite
+# 📚 Citation
 
+```bibtex
 @article{fractal_fake_detection_2026,
-  
   title   = {Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection},
-  
   author  = {Xie, Jim and others},
-  
   journal = {arXiv preprint arXiv:2604.17268},
-  
   year    = {2026}
-
 }
