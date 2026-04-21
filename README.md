@@ -49,7 +49,7 @@ jupyter notebook
 ```
 ---
 
-### Check result
+### 4. Check result
 
 Open the src/paper.ipynb with jupyter
 
