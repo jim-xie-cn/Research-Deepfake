@@ -46,11 +46,7 @@ cd scripts
 jupyter notebook
 ```
 ---
-### Open the notebook:
----
-```bash
-open src/paper.ipynb
-```
+### Open the src/paper.ipynb with jupyter
 ---
 
 The provided dataset already includes preprocessed images and extracted features used in the paper, enabling direct reproduction without running the full pipeline.
@@ -124,11 +120,9 @@ cd scripts
 jupyter notebook
 ```
 ---
-Open the notebook:
+Open src/main.ipynb with jupyter
+
 ---
-```bash
-open src/main.ipynb
-```
 ## Notes
 
 - Ensure all dependencies required by the scripts are installed (see `requirements.txt` if available).
