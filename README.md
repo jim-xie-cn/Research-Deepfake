@@ -1,9 +1,6 @@
 # Research-Deepfake
 
-This repository accompanies the paper:
-
-**Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection**  
-🔗 https://arxiv.org/abs/2604.17268
+This repository accompanies the paper: **Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection**  (🔗 https://arxiv.org/abs/2604.17268) 
 
 ---
 
@@ -28,35 +25,39 @@ pip install -r requirements.txt
 
 # 🔁 Reproduce Paper's Results
 
-To reproduce the results reported in the paper:
+All experimental data of this paper is available in https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake. The provided dataset already includes preprocessed images and extracted features used in the paper, enabling direct reproduction without running the full pipeline.
 
-Download the processed dataset:
+To reproduce the results reported in the paper follow steps:
+
+### Download the processed dataset
+
 https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake/resolve/main/paper/data.tar.gz?download=true
 
-Extract the dataset and replace the data directory:
+---
+
+### Extract the dataset and replace the data directory:
 ```bash
 tar -xzvf data.tar.gz
 ```
 ---
-Launch Jupyter Notebook:
+### Launch Jupyter Notebook:
 ```bash
 cd scripts
 jupyter notebook
 ```
 ---
-Open the notebook:
----
-```bash
-open src/paper.ipynb
-```
----
 
-The provided dataset already includes preprocessed images and extracted features used in the paper, enabling direct reproduction without running the full pipeline.
+### Check result
+
+Open the src/paper.ipynb with jupyter
+
 ---
 
 # Work with your-self data
 
 ## 1. Dataset Preparation
+
+Here is an example, (use 1-million-fake-faces for fake images,flickrfaceshq-dataset-ffhq for real images)
 
 Download the following datasets and unzip them into `./data/raw`:
 
@@ -115,18 +116,14 @@ This script runs the full preprocessing and analysis pipeline end-to-end.
 ---
 ## 3. Check result
 
-Launch Jupyter Notebook:
----
 ```bash
 cd scripts
 jupyter notebook
 ```
 ---
-Open the notebook:
+Open src/main.ipynb with jupyter
+
 ---
-```bash
-open src/main.ipynb
-```
 ## Notes
 
 - Ensure all dependencies required by the scripts are installed (see `requirements.txt` if available).
@@ -134,6 +131,9 @@ open src/main.ipynb
 
 ---
 
+# 📚 Citation
+
+```bibtex
 @article{fractal_fake_detection_2026,
   title   = {Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection},
   author  = {Xie, Jim and others},
