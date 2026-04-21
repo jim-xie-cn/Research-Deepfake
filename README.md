@@ -53,7 +53,7 @@ Open the src/paper.ipynb with jupyter
 
 ---
 
-# Work with your-self data
+# Work with data of yourself
 
 ## 1. Dataset Preparation
 
