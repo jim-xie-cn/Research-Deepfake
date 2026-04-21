@@ -1,27 +1,40 @@
 # Research-Deepfake
+
 This repository accompanies the paper: **Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection**  (🔗 https://arxiv.org/abs/2604.17268) 
+
 ---
+
 # Source Code Overview
+
 - `face_resize.py` — Resize raw images to 256×256 pixels.
 - `face_crop.py` — Detect and crop face regions from raw images.
 - `feature.py` — Extract FD, MFS, LAC, entropy, mean, and standard deviation features.
 - `analyse.py` — Sample feature sets for distribution analysis.
+
 ---
+
 # ⚙️ Installation
+
 Install required dependencies:
+
 ```bash
 cd install
 pip install -r requirements.txt
 ```
 ---
+
 # 🔁 Reproduce Paper's Results
 
 All experimental data of this paper is available in https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake. The provided dataset already includes preprocessed images and extracted features used in the paper, enabling direct reproduction without running the full pipeline.
 
 To reproduce the results reported in the paper follow steps:
+
 ### Download the processed dataset
+
 https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake/resolve/main/paper/data.tar.gz?download=true
+
 ---
+
 ### Extract the dataset and replace the data directory:
 ```bash
 tar -xzvf data.tar.gz
@@ -33,11 +46,17 @@ cd scripts
 jupyter notebook
 ```
 ---
+
 ### Check result
+
 Open the src/paper.ipynb with jupyter
+
 ---
+
 # Work with your-self data
+
 ## 1. Dataset Preparation
+
 Here is an example, (use 1-million-fake-faces for fake images,flickrfaceshq-dataset-ffhq for real images)
 
 Download the following datasets and unzip them into `./data/raw`:
@@ -51,6 +70,7 @@ Create the directory structure (if needed):
 mkdir -p data/raw/{1-million-fake-faces,flickrfaceshq-dataset-ffhq}
 ```
 ---
+
 After downloading and unzipping, the folders should look like:
 
 ```text
@@ -83,13 +103,16 @@ data/
             └── flickrfaceshq-dataset-ffhq
 ```
 ---
+
 ## 2. Run process task
 
 ```bash
 cd ./scripts
 sh pipeline.sh
 ```
+
 This script runs the full preprocessing and analysis pipeline end-to-end.
+
 ---
 ## 3. Check result
 
@@ -99,7 +122,9 @@ jupyter notebook
 ```
 ---
 Open src/main.ipynb with jupyter
+
 ---
+
 # 📚 Citation
 
 ```bibtex
