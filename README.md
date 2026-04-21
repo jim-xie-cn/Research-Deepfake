@@ -30,7 +30,9 @@ All experimental data of this paper is available in https://huggingface.co/datas
 To reproduce the results reported in the paper follow steps:
 
 ### Download the processed dataset
+
 https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake/resolve/main/paper/data.tar.gz?download=true
+
 ---
 
 ### Extract the dataset and replace the data directory:
