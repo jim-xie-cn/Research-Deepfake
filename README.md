@@ -59,7 +59,7 @@ Open the src/paper.ipynb with jupyter
 
 ### 1. Dataset Preparation
 
-Here is an example, (use 1-million-fake-faces for fake images,flickrfaceshq-dataset-ffhq for real images)
+Here is an example (use 1-million-fake-faces for fake images,flickrfaceshq-dataset-ffhq for real images).
 
 Download the following datasets and unzip them into `./data/raw`:
 
