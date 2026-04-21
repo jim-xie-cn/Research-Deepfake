@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 # 🔁 Reproduce Paper's Results
 
-All experimental data of this paper is available in https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake.
+All experimental data of this paper is available in https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake. The provided dataset already includes preprocessed images and extracted features used in the paper, enabling direct reproduction without running the full pipeline.
 
 To reproduce the results reported in the paper follow steps:
 
@@ -47,14 +47,14 @@ jupyter notebook
 ```
 ---
 ### Open the src/paper.ipynb with jupyter
----
 
-The provided dataset already includes preprocessed images and extracted features used in the paper, enabling direct reproduction without running the full pipeline.
 ---
 
 # Work with your-self data
 
 ## 1. Dataset Preparation
+
+Here is an example, (use 1-million-fake-faces for fake images,flickrfaceshq-dataset-ffhq for real images)
 
 Download the following datasets and unzip them into `./data/raw`:
 
