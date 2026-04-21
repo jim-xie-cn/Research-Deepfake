@@ -1,11 +1,59 @@
----
 # Research-Deepfake
 
-A lightweight toolkit for experimenting with deepfake image datasets, feature extraction, and exploratory analysis.
+This repository accompanies the paper:
+
+**Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection**  
+🔗 https://arxiv.org/abs/2604.17268
 
 ---
 
-## Dataset Preparation
+# Source Code Overview
+
+- `face_resize.py` — Resize raw images to 256×256 pixels.
+- `face_crop.py` — Detect and crop face regions from raw images.
+- `feature.py` — Extract FD, MFS, LAC, entropy, mean, and standard deviation features.
+- `analyse.py` — Sample feature sets for distribution analysis.
+
+---
+
+# ⚙️ Installation
+
+Install required dependencies:
+
+```bash
+cd install
+pip install -r requirements.txt
+
+---
+
+# 🔁 Reproduce Paper's Results
+
+To reproduce the results reported in the paper:
+
+Download the processed dataset:
+https://huggingface.co/datasets/jim-xie-cn/Research-Deepfake/resolve/main/paper/data.tar.gz?download=true
+
+Extract the dataset and replace the data directory:
+```bash
+tar -xzvf data.tar.gz
+---
+Launch Jupyter Notebook:
+```bash
+cd scripts
+jupyter notebook
+---
+Open the notebook:
+---
+```bash
+src/paper.ipynb
+---
+
+The provided dataset already includes preprocessed images and extracted features used in the paper, enabling direct reproduction without running the full pipeline.
+---
+
+# Work with your-self data
+
+## 1. Dataset Preparation
 
 Download the following datasets and unzip them into `./data/raw`:
 
@@ -17,6 +65,7 @@ Create the directory structure (if needed):
 ```bash
 mkdir -p data/raw/{1-million-fake-faces,flickrfaceshq-dataset-ffhq}
 ```
+---
 
 After downloading and unzipping, the folders should look like:
 
@@ -49,19 +98,9 @@ data/
             ├── 1-million-fake-faces
             └── flickrfaceshq-dataset-ffhq
 ```
-
 ---
 
-## Source Code Overview
-
-- `face_resize.py` — Resize raw images to 256×256 pixels.
-- `face_crop.py` — Detect and crop face regions from raw images.
-- `feature.py` — Extract FD, MFS, LAC, entropy, mean, and standard deviation features.
-- `analyse.py` — Sample feature sets for distribution analysis.
-
----
-
-## Quick Demo
+## 2. Run process task
 
 ```bash
 cd ./scripts
@@ -71,6 +110,20 @@ sh pipeline.sh
 This script runs the full preprocessing and analysis pipeline end-to-end.
 
 ---
+## 3. Check result
+
+Launch Jupyter Notebook:
+---
+```bash
+cd scripts
+jupyter notebook
+
+---
+Open the notebook:
+
+---
+```bash
+src/main.ipynb
 
 ## Notes
 
@@ -78,3 +131,10 @@ This script runs the full preprocessing and analysis pipeline end-to-end.
 - Adjust script paths or parameters as needed for your environment.
 
 ---
+
+@article{fractal_fake_detection_2026,
+  title   = {Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection},
+  author  = {Xie, Jim and others},
+  journal = {arXiv preprint arXiv:2604.17268},
+  year    = {2026}
+}
