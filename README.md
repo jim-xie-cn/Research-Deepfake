@@ -2,8 +2,6 @@
 
 This repository accompanies the paper: **Fractal Characterization of Low-Correlation Signals in AI-Generated Image Detection**  
 
-Paper: 🔗 https://arxiv.org/abs/2604.17268
-
 ---
 
 # Source Code Overview
